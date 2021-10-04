@@ -15,7 +15,9 @@ public:
 
 	void decreaseSpeed();
 
-	//void rotate(float t_dt);
+	void turnRight(float t_dt);
+
+	void turnLeft(float t_dt);
 
 private:
 	int m_playerIncreaseSpeed;

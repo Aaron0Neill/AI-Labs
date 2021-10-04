@@ -50,10 +50,10 @@ void Game::handleInput()
 
 void Game::update(sf::Time t_deltaTime)
 {
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-	//	m_player.rotate(t_deltaTime.asSeconds());
-	//else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-	//	m_player.rotate(t_deltaTime.asSeconds());
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		m_player.turnLeft(t_deltaTime.asSeconds());
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		m_player.turnRight(t_deltaTime.asSeconds());
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		m_player.decreaseSpeed();
