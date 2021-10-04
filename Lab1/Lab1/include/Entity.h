@@ -6,7 +6,7 @@
 #include "Globals.h"
 
 /// <summary>
-/// Entity class 
+/// Base Class for the behavior of the Player and NPC
 /// </summary>
 class Entity : public sf::Drawable
 {
@@ -40,10 +40,10 @@ public:
 	/// <param name="t_state">different ways to draw it</param>
 	virtual void draw(sf::RenderTarget& t_target, sf::RenderStates t_state = sf::RenderStates::Default)const override;
 protected:
-	float m_heading;
-	sf::Vector2f m_velocity;
-	sf::Vector2f m_position;
-	float m_velocityScaler;
+	float m_heading; // what direction the class is facing (0-360)
+	sf::Vector2f m_velocity; // vector its moving by
+	sf::Vector2f m_position; // where it is
+	float m_velocityScaler; // scalar to the velocity 
 	sf::Sprite m_body;
 	sf::Texture m_tex;
 };

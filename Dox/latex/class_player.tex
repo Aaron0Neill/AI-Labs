@@ -1,0 +1,93 @@
+\hypertarget{class_player}{}\doxysection{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+
+
+\mbox{\hyperlink{class_player}{Player}} controlled implemenetation of \mbox{\hyperlink{class_entity}{Entity}}  
+
+
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+Inheritance diagram for Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_player}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_a0f65c2e51586c81901856f11238a8a41}{Player}} (std\+::string const \&t\+\_\+filename)
+\begin{DoxyCompactList}\small\item\em Creates the player and assigns it the texture that matches the filename \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_ae18e39c92f9e83d14380dd0cc946b189}\label{class_player_ae18e39c92f9e83d14380dd0cc946b189}} 
+void {\bfseries increase\+Speed} ()
+\begin{DoxyCompactList}\small\item\em Increase the speed the player is moving at \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a136c4e98f9233f25db84f2dfe028cf41}\label{class_player_a136c4e98f9233f25db84f2dfe028cf41}} 
+void {\bfseries decrease\+Speed} ()
+\begin{DoxyCompactList}\small\item\em Decrease the speed the player is moving at \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_abf350f110b5c09aba445cfeb38eedb4b}{turn\+Right}} (float t\+\_\+dt)
+\begin{DoxyCompactList}\small\item\em Change the heading and allow the player to turn right \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a1928962078045673a8fe912a25a3c665}{turn\+Left}} (float t\+\_\+dt)
+\begin{DoxyCompactList}\small\item\em Change the heading and allow the player to turn left \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_player}{Player}} controlled implemenetation of \mbox{\hyperlink{class_entity}{Entity}} 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_player_a0f65c2e51586c81901856f11238a8a41}\label{class_player_a0f65c2e51586c81901856f11238a8a41}} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily Player\+::\+Player (\begin{DoxyParamCaption}\item[{std\+::string const \&}]{t\+\_\+filename }\end{DoxyParamCaption})}
+
+
+
+Creates the player and assigns it the texture that matches the filename 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t\+\_\+filename} & name of the texture file \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_player_a1928962078045673a8fe912a25a3c665}\label{class_player_a1928962078045673a8fe912a25a3c665}} 
+\index{Player@{Player}!turnLeft@{turnLeft}}
+\index{turnLeft@{turnLeft}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{turnLeft()}{turnLeft()}}
+{\footnotesize\ttfamily void Player\+::turn\+Left (\begin{DoxyParamCaption}\item[{float}]{t\+\_\+dt }\end{DoxyParamCaption})}
+
+
+
+Change the heading and allow the player to turn left 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t\+\_\+dt} & Time per frame so the player turns at a smooth amount\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_player_abf350f110b5c09aba445cfeb38eedb4b}\label{class_player_abf350f110b5c09aba445cfeb38eedb4b}} 
+\index{Player@{Player}!turnRight@{turnRight}}
+\index{turnRight@{turnRight}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{turnRight()}{turnRight()}}
+{\footnotesize\ttfamily void Player\+::turn\+Right (\begin{DoxyParamCaption}\item[{float}]{t\+\_\+dt }\end{DoxyParamCaption})}
+
+
+
+Change the heading and allow the player to turn right 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t\+\_\+dt} & Time per frame so the player turns at a smooth amount \\
+\hline
+\end{DoxyParams}
+~\newline
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Lab1/include/Player.\+h\end{DoxyCompactItemize}

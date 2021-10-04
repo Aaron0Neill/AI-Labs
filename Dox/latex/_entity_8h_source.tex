@@ -1,0 +1,34 @@
+\hypertarget{_entity_8h_source}{}\doxysection{Entity.\+h}
+\label{_entity_8h_source}\index{Lab1/include/Entity.h@{Lab1/include/Entity.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <SFML/Graphics.hpp>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Globals.h"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_entity}{Entity}} : \textcolor{keyword}{public} sf::Drawable}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13 \textcolor{keyword}{public}:}
+\DoxyCodeLine{19     \mbox{\hyperlink{class_entity_a0a2427fdeab2b9079bb272046a65850b}{Entity}}(std::string \textcolor{keyword}{const}\& t\_filename);}
+\DoxyCodeLine{20     \mbox{\hyperlink{class_entity}{\string~Entity}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{26     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_entity_a196caf3080a94ce584307c6be4433280}{update}}(sf::Time t\_dt);}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_entity_a8c612c8c2bf16fab6f882991aa15081a}{wrapCheck}}();}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} updateRotation();}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{41     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_entity_a61f1f90670f3c23d07d36dac6eb88fc1}{draw}}(sf::RenderTarget\& t\_target, sf::RenderStates t\_state = sf::RenderStates::Default)\textcolor{keyword}{const override};}
+\DoxyCodeLine{42 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{43     \textcolor{keywordtype}{float} m\_heading; \textcolor{comment}{// what direction the class is facing (0-\/360)}}
+\DoxyCodeLine{44     sf::Vector2f m\_velocity; \textcolor{comment}{// vector its moving by}}
+\DoxyCodeLine{45     sf::Vector2f m\_position; \textcolor{comment}{// where it is}}
+\DoxyCodeLine{46     \textcolor{keywordtype}{float} m\_velocityScaler; \textcolor{comment}{// scalar to the velocity }}
+\DoxyCodeLine{47     sf::Sprite m\_body;}
+\DoxyCodeLine{48     sf::Texture m\_tex;}
+\DoxyCodeLine{49 \};}
+
+\end{DoxyCode}
