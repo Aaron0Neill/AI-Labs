@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "Globals.h"
+#include <cmath>
 
 /// <summary>
 /// Entity class 

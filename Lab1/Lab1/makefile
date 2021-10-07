@@ -14,7 +14,7 @@ build:
 
 	mkdir ${BUILD_DIR}
 
-	g++ -o ${BUILD_DIR}/${FILENAME} ${INCLUDE} -I. ${SFML_DLL}
+	g++ -o ${BUILD_DIR}/${FILENAME} ${INCLUDE} -I. -I./include ${SFML_DLL}
 	@echo ${MSG_END}
 
 	${BUILD_DIR}/${FILENAME}
