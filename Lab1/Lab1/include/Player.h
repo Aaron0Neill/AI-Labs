@@ -19,6 +19,8 @@ public:
 
 	void turnLeft(float t_dt);
 
+	sf::Vector2f& getPosition();
+
 private:
 	int m_playerIncreaseSpeed;
 	float m_playerRotationSpeed;

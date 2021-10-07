@@ -10,16 +10,20 @@ Alien::Alien(std::string const& t_filename) :
 
 Alien::~Alien()
 {
-
+    if (m_stateMovement != nullptr)
+        delete m_stateMovement;
 }
 
-void Alien::setState(AiStates const& t_state)
+void Alien::setState(AiStates const& t_state, sf::Vector2f* t_arg)
 {
     if (m_currentState != t_state)
     {
         m_currentState = t_state;
         if (m_stateMovement != nullptr)
+        {
+            m_stateMovement->onExit();
             delete m_stateMovement;
+        }
 
         switch (m_currentState)
         {
@@ -27,12 +31,14 @@ void Alien::setState(AiStates const& t_state)
             m_stateMovement = new WanderState(&m_velocity);
             break;
         case AiStates::SEEK:
+            m_stateMovement = new SeekState(&(*t_arg));
             break;
         case AiStates::ARRIVE:
             break;
         case AiStates::FLEE:
             break;
         }
+        m_stateMovement->onEnter();
     }
 }
 

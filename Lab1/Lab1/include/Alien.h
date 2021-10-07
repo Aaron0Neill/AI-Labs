@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include <functional>
 #include "WanderState.h"
+#include "SeekState.h"
 
 enum class AiStates{
     NONE = -1,
@@ -19,7 +20,7 @@ public:
     Alien(std::string const& t_filename);
     ~Alien();
 
-    virtual void setState(AiStates const& t_state);
+    virtual void setState(AiStates const& t_state, sf::Vector2f* t_arg = nullptr);
 
     virtual void update(sf::Time t_dt)override;
 

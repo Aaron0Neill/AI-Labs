@@ -19,18 +19,29 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Alien.cpp" />
+    <ClCompile Include="src\ArriveState.cpp" />
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\NPC.cpp" />
     <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\PursueState.cpp" />
+    <ClCompile Include="src\SeekState.cpp" />
+    <ClCompile Include="src\WanderState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Alien.h" />
+    <ClInclude Include="include\ArriveState.h" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Globals.h" />
     <ClInclude Include="include\NPC.h" />
     <ClInclude Include="include\Player.h" />
+    <ClInclude Include="include\PursueState.h" />
+    <ClInclude Include="include\SeekState.h" />
+    <ClInclude Include="include\State.h" />
+    <ClInclude Include="include\WanderState.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

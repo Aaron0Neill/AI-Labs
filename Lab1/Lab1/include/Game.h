@@ -22,6 +22,7 @@ private:
 
 	Player m_player;
 	Alien m_wanderAlien;
+	Alien m_seekAlien;
 
 	std::vector<Entity*> m_entities;
 

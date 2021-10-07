@@ -3,13 +3,15 @@
 Game::Game() :
 	m_window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "AI Lab1"),
 	m_player("Player.png"),
-	m_wanderAlien("Alien.png")
+	m_wanderAlien("Alien.png"),
+	m_seekAlien("Alien.png")
 {
 	m_wanderAlien.setState(AiStates::WANDER);
-
+	m_seekAlien.setState(AiStates::SEEK, &m_player.getPosition());
 	
 	m_entities.push_back(&m_player);
 	m_entities.push_back(&m_wanderAlien);
+	m_entities.push_back(&m_seekAlien);
 }
 
 //****************************************

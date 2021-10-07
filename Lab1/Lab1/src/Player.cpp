@@ -34,3 +34,8 @@ void Player::turnLeft(float t_dt)
 	m_velocity = { static_cast<float>(cos(m_heading)), static_cast<float>(sin(m_heading)) };
 	updateRotation();
 }
+
+sf::Vector2f& Player::getPosition()
+{
+	return m_position;
+}
