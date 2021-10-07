@@ -1,9 +1,12 @@
-#pragma once
+#ifndef GAME_INCLUDE
+#define GAME_INCLUDE
 
 #include <SFML/Graphics.hpp>
 #include "Globals.h"
 #include "NPC.h"
 #include "Player.h"
+#include "Alien.h"
+#include <vector>
 
 class Game
 {
@@ -17,7 +20,11 @@ private:
 	void update(sf::Time t_deltaTime);
 	void render();
 
-	NPC m_npc;
 	Player m_player;
+	Alien m_wanderAlien;
+
+	std::vector<Entity*> m_entities;
+
 	sf::RenderWindow m_window;
 };
+#endif

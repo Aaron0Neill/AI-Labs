@@ -2,9 +2,14 @@
 
 Game::Game() :
 	m_window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "AI Lab1"),
-	m_npc("NPC.png"),
-	m_player("Player.png")
+	m_player("Player.png"),
+	m_wanderAlien("Alien.png")
 {
+	m_wanderAlien.setState(AiStates::WANDER);
+
+	
+	m_entities.push_back(&m_player);
+	m_entities.push_back(&m_wanderAlien);
 }
 
 //****************************************
@@ -60,8 +65,8 @@ void Game::update(sf::Time t_deltaTime)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		m_player.increaseSpeed();
 
-	m_npc.update(t_deltaTime);
-	m_player.update(t_deltaTime);
+	for(auto& e: m_entities)
+		e->update(t_deltaTime);
 }
 
 //****************************************
@@ -70,8 +75,8 @@ void Game::render()
 {
 	m_window.clear();
 
-	m_window.draw(m_npc);
-	m_window.draw(m_player);
+	for(auto&e : m_entities)
+		m_window.draw(*e);
 
 	m_window.display();
 }

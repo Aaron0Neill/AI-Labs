@@ -9,7 +9,7 @@ Entity::Entity(std::string const& t_filename) :
 	m_body.setTexture(m_tex);
 	m_body.setOrigin(m_body.getGlobalBounds().width / 2.f,m_body.getGlobalBounds().height / 2.f);
 	m_heading = (rand() % 360) * (PI / 180.0);
-	m_velocity = { cos(m_heading), sin(m_heading)};
+	m_velocity = { static_cast<float>(cos(m_heading)), static_cast<float>(sin(m_heading))};
 	updateRotation();
 }
 

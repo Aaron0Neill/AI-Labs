@@ -24,13 +24,13 @@ void Player::decreaseSpeed()
 void Player::turnRight(float t_dt)
 {
 	m_heading += m_playerRotationSpeed * t_dt;
-	m_velocity = { cos(m_heading), sin(m_heading) };
+	m_velocity = { static_cast<float>(cos(m_heading)), static_cast<float>(sin(m_heading)) };
 	updateRotation();
 }
 
 void Player::turnLeft(float t_dt)
 {
 	m_heading -= m_playerRotationSpeed * t_dt;
-	m_velocity = { cos(m_heading), sin(m_heading) };
+	m_velocity = { static_cast<float>(cos(m_heading)), static_cast<float>(sin(m_heading)) };
 	updateRotation();
 }

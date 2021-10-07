@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENTITY_INCLUDE
+#define ENTITY_INCLUDE
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -32,6 +33,9 @@ public:
 	/// </summary>
 	void wrapCheck();
 
+	/// <summary>
+	/// Rotates the entity to face in the direction of the velocity
+	/// </summary>
 	void updateRotation();
 
 	/// <summary>
@@ -48,3 +52,4 @@ protected:
 	sf::Sprite m_body;
 	sf::Texture m_tex;
 };
+#endif
