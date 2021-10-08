@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Alien.h"
 #include <vector>
+#include "DebugInfo.h"
 
 class Game
 {
@@ -24,8 +25,12 @@ private:
 	Alien m_wanderAlien;
 	Alien m_seekAlien;
 
-	std::vector<Entity*> m_entities;
+	sf::Font m_gameFont;
 
+	DebugInfo m_info;
+
+	std::vector<Entity*> m_entities;
+	sf::VertexArray m_debugArea;
 	sf::RenderWindow m_window;
 };
 #endif

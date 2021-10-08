@@ -16,12 +16,8 @@ public:
 
     virtual void onExit();
 private:
-    float m_wanderWait;
-    float m_wanderOffset;
-    float m_wanderRadius;
-    float m_wanderRate;
-    float m_wanderOrientation;
-    float m_maxAcc;
-    float m_targetHeading;
+    float m_waitTime; // how long before the wanderer changes dir
+    float m_targetCtr; // center of the circle for new heading
+    float m_targetRadius; // radius of the circle
 };
 #endif

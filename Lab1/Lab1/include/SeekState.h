@@ -15,6 +15,6 @@ public:
 
     virtual void onExit()override;
 private:
-    sf::Vector2f* m_target;
+
 };
 #endif

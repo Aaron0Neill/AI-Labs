@@ -5,33 +5,44 @@
 #include <functional>
 #include "WanderState.h"
 #include "SeekState.h"
+#include <unordered_map>
 
 enum class AiStates{
     NONE = -1,
     WANDER,
     SEEK,
     ARRIVE,
-    FLEE
+    FLEE,
+    PURSUE
 };
 
 class Alien : public Entity
 {
 public:
-    Alien(std::string const& t_filename);
+    Alien(std::string const& t_name);
     ~Alien();
 
-    virtual void setState(AiStates const& t_state, sf::Vector2f* t_arg = nullptr);
+    virtual void setState(AiStates const& t_state);
 
     virtual void update(sf::Time t_dt)override;
 
     virtual void setTarget(sf::Vector2f* t_target);
 
+    virtual void setPosition(sf::Vector2f t_pos);
+
+    virtual const std::string& getState();
+
 private:
+    friend class State;
     friend class WanderState;
+    friend class SeekState;
+
     AiStates m_currentState;
 
     State* m_stateMovement;
 
     sf::Vector2f* m_target;
+
+    std::unordered_map<AiStates, std::string> m_mapping;
 };
 #endif

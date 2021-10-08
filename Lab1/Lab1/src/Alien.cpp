@@ -1,11 +1,19 @@
 #include "include/Alien.h"
 
-Alien::Alien(std::string const& t_filename) :
-    Entity(t_filename),
+Alien::Alien(std::string const& t_name) :
+    Entity("Alien.png", t_name),
     m_currentState(AiStates::NONE),
-    m_stateMovement(nullptr)
+    m_stateMovement(nullptr),
+    m_target(nullptr)
 {
+    m_mapping.emplace(AiStates::NONE, "None");
+    m_mapping.emplace(AiStates::WANDER, "Wander");
+    m_mapping.emplace(AiStates::SEEK, "Seek");
+    m_mapping.emplace(AiStates::ARRIVE, "Arrive");
+    m_mapping.emplace(AiStates::PURSUE, "Pursue");
 }
+
+//****************************************
 
 Alien::~Alien()
 {
@@ -13,7 +21,9 @@ Alien::~Alien()
         delete m_stateMovement;
 }
 
-void Alien::setState(AiStates const& t_state, sf::Vector2f* t_arg)
+//****************************************
+
+void Alien::setState(AiStates const& t_state)
 {
     if (m_currentState != t_state)
     {
@@ -28,7 +38,6 @@ void Alien::setState(AiStates const& t_state, sf::Vector2f* t_arg)
         {
         case AiStates::WANDER:
             m_stateMovement = new WanderState(this);
-            std::cout << "My Heading: " << m_heading << std::endl;
             break;
         case AiStates::SEEK:
             m_stateMovement = new SeekState(this);
@@ -42,6 +51,8 @@ void Alien::setState(AiStates const& t_state, sf::Vector2f* t_arg)
     }
 }
 
+//****************************************
+
 void Alien::update(sf::Time t_dt)
 {
     m_stateMovement->update(t_dt);
@@ -51,7 +62,22 @@ void Alien::update(sf::Time t_dt)
     m_body.setPosition(m_position);
 }
 
+//****************************************
+
 void Alien::setTarget(sf::Vector2f* t_target)
 {
     m_target = t_target;
+}
+
+//****************************************
+
+void Alien::setPosition(sf::Vector2f t_pos)
+{
+    m_position = t_pos;
+    m_body.setPosition(m_position);
+}
+
+const std::string& Alien::getState()
+{
+    return m_mapping.at(m_currentState);
 }

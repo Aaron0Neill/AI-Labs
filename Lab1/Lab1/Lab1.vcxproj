@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClCompile Include="src\Alien.cpp" />
     <ClCompile Include="src\ArriveState.cpp" />
+    <ClCompile Include="src\Button.cpp" />
+    <ClCompile Include="src\DebugInfo.cpp" />
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -33,9 +35,12 @@
   <ItemGroup>
     <ClInclude Include="include\Alien.h" />
     <ClInclude Include="include\ArriveState.h" />
+    <ClInclude Include="include\Button.h" />
+    <ClInclude Include="include\DebugInfo.h" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Globals.h" />
+    <ClInclude Include="include\MathUtils.h" />
     <ClInclude Include="include\NPC.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\PursueState.h" />

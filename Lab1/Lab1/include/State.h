@@ -11,7 +11,9 @@ class State
 {
 public:
     State(Alien* t_alien) : 
-        m_alien(t_alien)
+        m_alien(t_alien),
+        m_maxTurnRadius(1.0f),
+        m_targetHeading(0)
     {
 
     }
@@ -21,8 +23,13 @@ public:
     virtual void update(sf::Time t_dt) = 0;
     
     virtual void onExit()=0;
+
 protected:
     Alien* m_alien;
+    float m_maxTurnRadius; // max amount the alien can turn
+    float m_targetHeading; // heading to the new target
 };
+
+
 #include "Alien.h"
 #endif

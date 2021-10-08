@@ -19,7 +19,7 @@ public:
 	/// Takes the name of the texture file as an argument
 	/// </summary>
 	/// <param name="t_filename">Name of the texture file</param>
-	Entity(std::string const& t_filename);
+	Entity(const std::string& t_filename, const std::string& t_name);
 	~Entity() = default;
 
 	/// <summary>
@@ -45,11 +45,13 @@ public:
 	/// <param name="t_target">target to draw the texture</param>
 	/// <param name="t_state">different ways to draw it</param>
 	virtual void draw(sf::RenderTarget& t_target, sf::RenderStates t_state = sf::RenderStates::Default)const override;
+
+
+	const std::string& getName() { return m_name; }
 protected:
 
-	virtual sf::Sprite& getSprite() {return m_body;}
-
-	friend class WanderState;
+	std::string m_name;
+	friend class State;
 	float m_heading;
 	sf::Vector2f m_velocity;
 	sf::Vector2f m_position;

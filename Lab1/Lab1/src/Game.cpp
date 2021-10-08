@@ -2,16 +2,34 @@
 
 Game::Game() :
 	m_window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "AI Lab1"),
-	m_player("Player.png"),
-	m_wanderAlien("Alien.png"),
-	m_seekAlien("Alien.png")
+	m_player("Ronald mcDonald"),
+	m_wanderAlien("GLaDOS"),
+	m_seekAlien("Seeker"),
+	m_debugArea(sf::Quads),
+	m_info(m_gameFont)
 {
+	m_gameFont.loadFromFile("assets/calibri.ttf");
+
 	m_wanderAlien.setState(AiStates::WANDER);
+	m_wanderAlien.setTarget(&m_player.getPosition());
+
 	m_seekAlien.setState(AiStates::SEEK);
-	
+	m_seekAlien.setPosition({ 100,100 });
+	m_seekAlien.setTarget(&m_player.getPosition());
+
 	m_entities.push_back(&m_player);
 	m_entities.push_back(&m_wanderAlien);
 	m_entities.push_back(&m_seekAlien);
+
+	sf::Color inner = sf::Color(100, 100, 100, 100);
+	sf::Color outer = sf::Color(100, 100, 100, 255);
+
+	m_debugArea.append(sf::Vertex{ sf::Vector2f(static_cast<float>(SCREEN_WIDTH - DEBUG_WIDTH), 0.0f), inner });
+	m_debugArea.append(sf::Vertex{ sf::Vector2f(static_cast<float>(SCREEN_WIDTH), 0.0f), outer });
+	m_debugArea.append(sf::Vertex{ sf::Vector2f(static_cast<float>(SCREEN_WIDTH), static_cast<float>(SCREEN_HEIGHT)), outer });
+	m_debugArea.append(sf::Vertex{ sf::Vector2f(static_cast<float>(SCREEN_WIDTH - DEBUG_WIDTH), static_cast<float>(SCREEN_HEIGHT)), inner });
+
+	m_info.showAlien(&m_seekAlien);
 }
 
 //****************************************
@@ -49,6 +67,8 @@ void Game::handleInput()
 		}
 		if (sf::Event::KeyPressed == currentEvent.type)
 		{
+			if (sf::Keyboard::Enter == currentEvent.key.code)
+				m_info.activateButton();
 		}
 	}
 }
@@ -77,8 +97,11 @@ void Game::render()
 {
 	m_window.clear();
 
-	for(auto&e : m_entities)
+	for (auto& e : m_entities)
 		m_window.draw(*e);
+
+	m_window.draw(m_debugArea);
+	m_window.draw(m_info);
 
 	m_window.display();
 }

@@ -8,5 +8,5 @@
 class NPC : public Entity
 {
 public:
-	NPC(std::string const& t_filename);
+	NPC(std::string const&);
 };

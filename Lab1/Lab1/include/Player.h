@@ -8,7 +8,7 @@
 class Player : public Entity
 {
 public:
-	Player(std::string const& t_filename);
+	Player(std::string const& t_name);
 	~Player();
 
 	void increaseSpeed();
