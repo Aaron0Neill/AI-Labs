@@ -6,6 +6,7 @@
 #include <string>
 #include "Globals.h"
 #include <cmath>
+#include "MathUtils.h"
 
 /// <summary>
 /// Entity class 
@@ -45,6 +46,10 @@ public:
 	/// <param name="t_state">different ways to draw it</param>
 	virtual void draw(sf::RenderTarget& t_target, sf::RenderStates t_state = sf::RenderStates::Default)const override;
 protected:
+
+	virtual sf::Sprite& getSprite() {return m_body;}
+
+	friend class WanderState;
 	float m_heading;
 	sf::Vector2f m_velocity;
 	sf::Vector2f m_position;

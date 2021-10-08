@@ -7,7 +7,7 @@ Game::Game() :
 	m_seekAlien("Alien.png")
 {
 	m_wanderAlien.setState(AiStates::WANDER);
-	m_seekAlien.setState(AiStates::SEEK, &m_player.getPosition());
+	m_seekAlien.setState(AiStates::SEEK);
 	
 	m_entities.push_back(&m_player);
 	m_entities.push_back(&m_wanderAlien);

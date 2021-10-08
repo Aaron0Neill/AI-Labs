@@ -5,7 +5,6 @@ Alien::Alien(std::string const& t_filename) :
     m_currentState(AiStates::NONE),
     m_stateMovement(nullptr)
 {
-
 }
 
 Alien::~Alien()
@@ -28,10 +27,11 @@ void Alien::setState(AiStates const& t_state, sf::Vector2f* t_arg)
         switch (m_currentState)
         {
         case AiStates::WANDER:
-            m_stateMovement = new WanderState(&m_velocity);
+            m_stateMovement = new WanderState(this);
+            std::cout << "My Heading: " << m_heading << std::endl;
             break;
         case AiStates::SEEK:
-            m_stateMovement = new SeekState(&(*t_arg));
+            m_stateMovement = new SeekState(this);
             break;
         case AiStates::ARRIVE:
             break;
@@ -44,6 +44,14 @@ void Alien::setState(AiStates const& t_state, sf::Vector2f* t_arg)
 
 void Alien::update(sf::Time t_dt)
 {
-    Entity::update(t_dt);
     m_stateMovement->update(t_dt);
+    m_position += m_velocity * m_velocityScaler * t_dt.asSeconds();
+    wrapCheck();
+    updateRotation();
+    m_body.setPosition(m_position);
+}
+
+void Alien::setTarget(sf::Vector2f* t_target)
+{
+    m_target = t_target;
 }

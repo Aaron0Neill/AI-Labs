@@ -6,7 +6,7 @@
 class SeekState : public State
 {
 public:
-    SeekState(sf::Vector2f* t_target);
+    SeekState(Alien* t_alien);
     virtual ~SeekState();
 
     virtual void onEnter()override;

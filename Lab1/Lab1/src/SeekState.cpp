@@ -1,7 +1,7 @@
 #include "SeekState.h"
 
-SeekState::SeekState(sf::Vector2f* t_target) : 
-    m_target(&(*t_target))
+SeekState::SeekState(Alien* t_alien) : 
+    State(t_alien)
 {
 
 }

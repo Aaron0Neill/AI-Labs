@@ -24,9 +24,14 @@ public:
 
     virtual void update(sf::Time t_dt)override;
 
+    virtual void setTarget(sf::Vector2f* t_target);
+
 private:
+    friend class WanderState;
     AiStates m_currentState;
 
     State* m_stateMovement;
+
+    sf::Vector2f* m_target;
 };
 #endif

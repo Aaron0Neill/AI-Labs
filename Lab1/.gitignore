@@ -10,9 +10,9 @@
 !.vscode/extensions.json
 *.code-workspace
 
-./Lab1/bin/*
+./Lab1/bin
 
-./vs
+./Lab1/.vs
 
 ./[D][d]ebug
 ./Lab1/[D][d]ebug

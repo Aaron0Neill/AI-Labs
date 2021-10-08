@@ -2,11 +2,12 @@
 #define WANDER_STATE_INCLUDE
 
 #include "State.h"
+#include <iostream>
 
 class WanderState : public State
 {
 public:
-    WanderState(sf::Vector2f* t_myVelocity);
+    WanderState(Alien* t_alien);
     virtual ~WanderState();
 
     virtual void onEnter();
@@ -15,11 +16,12 @@ public:
 
     virtual void onExit();
 private:
-    sf::Vector2f* m_velocity;
+    float m_wanderWait;
     float m_wanderOffset;
     float m_wanderRadius;
     float m_wanderRate;
     float m_wanderOrientation;
     float m_maxAcc;
+    float m_targetHeading;
 };
 #endif
