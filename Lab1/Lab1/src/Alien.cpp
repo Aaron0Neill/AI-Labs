@@ -37,12 +37,14 @@ void Alien::setState(AiStates const& t_state)
         switch (m_currentState)
         {
         case AiStates::WANDER:
+            m_target = nullptr;
             m_stateMovement = new WanderState(this);
             break;
         case AiStates::SEEK:
             m_stateMovement = new SeekState(this);
             break;
         case AiStates::ARRIVE:
+            m_stateMovement = new ArriveState(this);
             break;
         case AiStates::FLEE:
             break;

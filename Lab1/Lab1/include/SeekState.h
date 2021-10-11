@@ -15,6 +15,5 @@ public:
 
     virtual void onExit()override;
 private:
-
 };
 #endif

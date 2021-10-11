@@ -25,4 +25,7 @@ private:
 	int m_playerIncreaseSpeed;
 	float m_playerRotationSpeed;
 	float m_heading;
+
+	int m_maxSpeed;
+	int m_minSpeed;
 };

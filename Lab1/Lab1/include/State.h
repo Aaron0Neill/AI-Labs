@@ -12,7 +12,9 @@ class State
 {
 public:
     State(Alien* t_alien) : 
-        m_alien(t_alien)
+        m_alien(t_alien),
+        m_acceleration(.5f),
+        m_maxSpeed(1.5f)
     {
 
     }
@@ -25,10 +27,9 @@ public:
 
 protected:
 
-    virtual void moveToTarget(sf::Time t_dt);
+    virtual void moveToTarget(sf::Vector2f t_target, sf::Time t_dt);
 
     Alien* m_alien;
-    sf::Vector2f* m_target;
 
     float m_maxSpeed;
     float m_acceleration;

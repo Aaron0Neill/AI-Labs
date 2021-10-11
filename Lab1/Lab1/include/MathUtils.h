@@ -6,7 +6,7 @@
 
 #define PI 3.14159263
 
-static float getPositiveHeading(sf::Vector2f t_vec)
+static float getHeading(sf::Vector2f t_vec)
 {
     return atan2f(t_vec.y, t_vec.x);
 }

@@ -3,8 +3,7 @@
 
 #include "Entity.h"
 #include <functional>
-#include "WanderState.h"
-#include "SeekState.h"
+#include "StateInclude.h"
 #include <unordered_map>
 
 enum class AiStates{
@@ -39,6 +38,7 @@ private:
     friend class State;
     friend class WanderState;
     friend class SeekState;
+    friend class ArriveState;
 
     AiStates m_currentState;
 

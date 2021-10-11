@@ -30,6 +30,7 @@
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\PursueState.cpp" />
     <ClCompile Include="src\SeekState.cpp" />
+    <ClCompile Include="src\State.cpp" />
     <ClCompile Include="src\WanderState.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +47,7 @@
     <ClInclude Include="include\PursueState.h" />
     <ClInclude Include="include\SeekState.h" />
     <ClInclude Include="include\State.h" />
+    <ClInclude Include="include\StateInclude.h" />
     <ClInclude Include="include\WanderState.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
