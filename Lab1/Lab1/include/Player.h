@@ -21,6 +21,8 @@ public:
 
 	sf::Vector2f& getPosition();
 
+	sf::Vector2f& getVelocity();
+
 private:
 	int m_playerIncreaseSpeed;
 	float m_playerRotationSpeed;

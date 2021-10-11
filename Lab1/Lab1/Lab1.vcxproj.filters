@@ -107,5 +107,8 @@
     <ClInclude Include="include\StateInclude.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
+    <ClInclude Include="include\ButtonFunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

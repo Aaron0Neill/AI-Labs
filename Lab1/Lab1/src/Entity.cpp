@@ -16,7 +16,7 @@ Entity::Entity(const std::string& t_filename, const std::string& t_name) :
 
 void Entity::update(sf::Time t_dt)
 {
-	m_position += m_velocity * m_velocityScaler * t_dt.asSeconds();
+	m_position += m_velocity * t_dt.asSeconds();
 
 	wrapCheck();
 	m_body.setPosition(m_position);

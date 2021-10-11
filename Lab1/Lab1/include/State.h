@@ -13,7 +13,7 @@ class State
 public:
     State(Alien* t_alien) : 
         m_alien(t_alien),
-        m_acceleration(.5f),
+        m_acceleration(2.0f),
         m_maxSpeed(1.5f)
     {
 

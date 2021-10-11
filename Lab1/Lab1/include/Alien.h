@@ -29,9 +29,16 @@ public:
 
     virtual void setPosition(sf::Vector2f t_pos);
 
+    virtual void setPlayerVelocity(sf::Vector2f* t_playerVelo);
+
     virtual const std::string& getState();
     float getHeading(){
         return atan2f(m_velocity.y, m_velocity.x);
+    }
+
+    const sf::Sprite& getBody()
+    {
+        return m_body;
     }
 
 private:
@@ -39,12 +46,14 @@ private:
     friend class WanderState;
     friend class SeekState;
     friend class ArriveState;
+    friend class PursueState;
 
     AiStates m_currentState;
 
     State* m_stateMovement;
 
     sf::Vector2f* m_target;
+    sf::Vector2f* m_playerVelo;
 
     std::unordered_map<AiStates, std::string> m_mapping;
 };

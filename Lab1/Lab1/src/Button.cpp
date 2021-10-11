@@ -2,7 +2,8 @@
 
 Button::Button(sf::Texture& t_tex, sf::Font& t_font, std::string t_name) : 
 	m_caller(nullptr),
-	m_arg(AiStates::NONE)
+	m_arg(AiStates::NONE),
+	m_func(nullptr)
 {
 	m_text.setFont(t_font);
 	m_text.setString(t_name);
@@ -33,12 +34,20 @@ void Button::onHover()
 void Button::onClick()
 {
 	m_sprite.setTextureRect(sf::IntRect(256, 0, 128, 64));
-	m_func(m_caller, m_arg);
 }
 
 //****************************************
 
 void Button::onRelease()
+{
+	m_sprite.setTextureRect(sf::IntRect(0, 0, 128, 64));
+	if (m_func != nullptr)
+		m_func->call();
+}
+
+//****************************************
+
+void Button::offHover()
 {
 	m_sprite.setTextureRect(sf::IntRect(0, 0, 128, 64));
 }

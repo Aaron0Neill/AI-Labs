@@ -3,15 +3,25 @@
 
 #include <SFML/Graphics.hpp>
 #include "Button.h"
+#include <vector>
 
 class DebugInfo : public sf::Drawable
 {
 public:
-	DebugInfo(sf::Font& t_font);
+	DebugInfo(sf::Font& t_font, std::function<void(Game*)> t_func, Game* t_game);
+	~DebugInfo();
+
+	void setAlien(Alien* t_alien);
+
+	void init();
 
 	void showAlien(Alien* m_alien);
 
-	void activateButton();
+	void updateButton(sf::Vector2f);
+
+	void clickButton(sf::Vector2f);
+
+	void releaseButton(sf::Vector2f);
 
 	void hide();
 
@@ -23,7 +33,9 @@ private:
 
 	sf::Texture m_buttonTex;
 
-	Button m_button;
+	Button* m_currentButton;
+
+	std::vector<Button*> m_buttons;
 
 	bool m_show;
 };

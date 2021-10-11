@@ -13,7 +13,7 @@ class Game
 {
 public: 
 	Game();
-	~Game()= default;
+	~Game();
 	void run();
 private:
 
@@ -21,15 +21,17 @@ private:
 	void update(sf::Time t_deltaTime);
 	void render();
 
+	void addAlien();
+
 	Player m_player;
-	Alien m_wanderAlien;
-	Alien m_seekAlien;
+	Alien m_GLaDOS;
+	Alien m_clapTrap;
 
 	sf::Font m_gameFont;
 
 	DebugInfo m_info;
 
-	std::vector<Entity*> m_entities;
+	std::vector<Alien*> m_aliens;
 	sf::VertexArray m_debugArea;
 	sf::RenderWindow m_window;
 };

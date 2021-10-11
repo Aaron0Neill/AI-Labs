@@ -21,5 +21,6 @@ private:
     float m_waitTime; // how long before the wanderer changes dir
     float m_targetCtr; // center of the circle for new heading
     float m_targetRadius; // radius of the circle
+    sf::Vector2f m_target;
 };
 #endif

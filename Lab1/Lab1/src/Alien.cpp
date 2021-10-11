@@ -36,8 +36,10 @@ void Alien::setState(AiStates const& t_state)
 
         switch (m_currentState)
         {
+        case AiStates::NONE:
+            m_stateMovement = nullptr;
+            break;
         case AiStates::WANDER:
-            m_target = nullptr;
             m_stateMovement = new WanderState(this);
             break;
         case AiStates::SEEK:
@@ -46,10 +48,12 @@ void Alien::setState(AiStates const& t_state)
         case AiStates::ARRIVE:
             m_stateMovement = new ArriveState(this);
             break;
-        case AiStates::FLEE:
+        case AiStates::PURSUE:
+            m_stateMovement = new PursueState(this);
             break;
         }
-        m_stateMovement->onEnter();
+        if (m_stateMovement != nullptr)
+            m_stateMovement->onEnter();
     }
 }
 
@@ -57,12 +61,16 @@ void Alien::setState(AiStates const& t_state)
 
 void Alien::update(sf::Time t_dt)
 {
-    m_stateMovement->update(t_dt); // update velocity
-    updateRotation(); // update rotation
-    m_position += m_velocity; // make movement
+    if (m_stateMovement != nullptr)
+    {
+        m_stateMovement->update(t_dt); // update velocity
 
-    wrapCheck();
-    m_body.setPosition(m_position);
+        updateRotation(); // update rotation
+        m_position += m_velocity; // make movement
+
+        wrapCheck();
+        m_body.setPosition(m_position);
+    }
 }
 
 //****************************************
@@ -78,6 +86,13 @@ void Alien::setPosition(sf::Vector2f t_pos)
 {
     m_position = t_pos;
     m_body.setPosition(m_position);
+}
+
+//***************************************
+
+void Alien::setPlayerVelocity(sf::Vector2f* t_playerVelo)
+{
+    m_playerVelo = t_playerVelo;
 }
 
 //***************************************
