@@ -9,8 +9,6 @@ Entity::Entity(const std::string& t_filename, const std::string& t_name) :
 	m_tex.loadFromFile("assets/" + t_filename);
 	m_body.setTexture(m_tex);
 	m_body.setOrigin(m_body.getGlobalBounds().width / 2.f,m_body.getGlobalBounds().height / 2.f);
-	m_heading = Deg2Rad(static_cast<float>(rand() % 360));
-	m_velocity = { cosf(m_heading), sinf(m_heading)};
 	updateRotation();
 }
 
@@ -39,7 +37,7 @@ void Entity::wrapCheck()
 
 void Entity::updateRotation()
 {
-	m_body.setRotation(Rad2Deg(m_heading));
+	m_body.setRotation(Rad2Deg(atan2f(m_velocity.y, m_velocity.x)));
 }
 
 //****************************************

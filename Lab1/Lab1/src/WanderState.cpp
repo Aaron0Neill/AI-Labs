@@ -2,11 +2,12 @@
 
 WanderState::WanderState(Alien* t_alien) : 
     State(t_alien),
-    m_targetCtr(5),
-    m_targetRadius(10),
+    m_targetCtr(50),
+    m_targetRadius(50),
     m_waitTime(4)
 {
-
+    m_maxSpeed = 1;
+    m_acceleration = 0.1;
 }
 
 //****************************************
@@ -20,7 +21,8 @@ WanderState::~WanderState()
 
 void WanderState::onEnter()
 {
-    m_targetHeading = m_alien->m_heading;
+    m_target = new sf::Vector2f();
+    updateTarget();
     m_alien->m_body.setColor(sf::Color::Cyan);
     m_alien->m_velocityScaler = 25;
 }
@@ -32,30 +34,26 @@ void WanderState::update(sf::Time t_dt)
     m_waitTime -= t_dt.asSeconds();
     if (m_waitTime <= 0)
     {
-        sf::Vector2f wanderOffsetPt = m_alien->m_position + (m_alien->m_velocity * m_targetCtr);
-        float randDeg = static_cast<float>(rand() % 360);
-        randDeg = Deg2Rad(randDeg);
-        sf::Vector2f targetPt = (sf::Vector2f{cosf(randDeg), sinf(randDeg)} * m_targetRadius) + wanderOffsetPt;
-        m_targetHeading =  getPositiveHeading(targetPt- m_alien->m_position);
-        m_waitTime = 6;
+        updateTarget();
     }
 
-    if (m_alien->m_heading > m_targetHeading + m_maxTurnRadius * t_dt.asSeconds() ||
-        m_alien->m_heading < m_targetHeading - m_maxTurnRadius * t_dt.asSeconds())
-    {
-        if (m_alien->m_heading < m_targetHeading)
-            m_alien->m_heading += m_maxTurnRadius * t_dt.asSeconds();
-        else
-            m_alien->m_heading -= m_maxTurnRadius * t_dt.asSeconds();
-
-        m_alien->m_velocity = sf::Vector2f{ cosf(m_alien->m_heading)
-        , sinf(m_alien->m_heading) };
-    }
+    moveToTarget(t_dt);
 }
 
 //****************************************
 
 void WanderState::onExit()
 {
+    delete m_target;
     std::cout << "Exiting Wander State\n";
+}
+
+//****************************************
+
+void WanderState::updateTarget()
+{
+    sf::Vector2f wanderOffsetPt = m_alien->m_position + (getUnitVec(m_alien->m_velocity) * m_targetCtr);
+    float randRad = Deg2Rad(static_cast<float>(rand() % 360));
+    *m_target = (sf::Vector2f{cosf(randRad), sinf(randRad)} * m_targetRadius) + wanderOffsetPt;
+    m_waitTime = 1;
 }

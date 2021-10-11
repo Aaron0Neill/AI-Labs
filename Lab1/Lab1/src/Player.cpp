@@ -3,7 +3,8 @@
 Player::Player(std::string const& t_name) :
 	Entity("Player.png", t_name),
 	m_playerIncreaseSpeed(10),
-	m_playerRotationSpeed(Deg2Rad(45))
+	m_playerRotationSpeed(Deg2Rad(45)),
+	m_heading(0)
 {
 }
 

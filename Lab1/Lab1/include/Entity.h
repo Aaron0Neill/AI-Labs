@@ -52,7 +52,6 @@ protected:
 
 	std::string m_name;
 	friend class State;
-	float m_heading;
 	sf::Vector2f m_velocity;
 	sf::Vector2f m_position;
 	float m_velocityScaler;

@@ -31,6 +31,9 @@ public:
     virtual void setPosition(sf::Vector2f t_pos);
 
     virtual const std::string& getState();
+    float getHeading(){
+        return atan2f(m_velocity.y, m_velocity.x);
+    }
 
 private:
     friend class State;

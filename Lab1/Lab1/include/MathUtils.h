@@ -31,4 +31,24 @@ static float VectorSquaredDistance(const sf::Vector2f& v1)
     return (v1.x * v1.x) + (v1.y * v1.y);
 }
 
+static float VectorDistance(const sf::Vector2f& v1)
+{
+    return sqrtf(VectorSquaredDistance(v1));
+}
+
+static void UnitVec(sf::Vector2f& v1)
+{
+    float dis = VectorDistance(v1);
+    if (dis != 0)
+        v1 /= dis;
+}
+
+static sf::Vector2f getUnitVec(const sf::Vector2f& v1)
+{
+    float dis = VectorDistance(v1);
+    if (dis != 0)
+        return v1 / dis;
+    return sf::Vector2f();
+}
+
 #endif

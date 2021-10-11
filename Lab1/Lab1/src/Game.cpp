@@ -10,12 +10,14 @@ Game::Game() :
 {
 	m_gameFont.loadFromFile("assets/calibri.ttf");
 
+	m_wanderAlien.setPosition({ 300,300 });
+
 	m_wanderAlien.setState(AiStates::WANDER);
 	m_wanderAlien.setTarget(&m_player.getPosition());
 
+	m_seekAlien.setTarget(&m_player.getPosition());
 	m_seekAlien.setState(AiStates::SEEK);
 	m_seekAlien.setPosition({ 100,100 });
-	m_seekAlien.setTarget(&m_player.getPosition());
 
 	m_entities.push_back(&m_player);
 	m_entities.push_back(&m_wanderAlien);

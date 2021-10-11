@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "MathUtils.h"
+#include <cstdio>
 
 class Alien;
 
@@ -11,9 +12,7 @@ class State
 {
 public:
     State(Alien* t_alien) : 
-        m_alien(t_alien),
-        m_maxTurnRadius(1.0f),
-        m_targetHeading(0)
+        m_alien(t_alien)
     {
 
     }
@@ -25,11 +24,14 @@ public:
     virtual void onExit()=0;
 
 protected:
+
+    virtual void moveToTarget(sf::Time t_dt);
+
     Alien* m_alien;
-    float m_maxTurnRadius; // max amount the alien can turn
-    float m_targetHeading; // heading to the new target
+    sf::Vector2f* m_target;
+
+    float m_maxSpeed;
+    float m_acceleration;
 };
-
-
 #include "Alien.h"
 #endif

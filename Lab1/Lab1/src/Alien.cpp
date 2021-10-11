@@ -55,10 +55,11 @@ void Alien::setState(AiStates const& t_state)
 
 void Alien::update(sf::Time t_dt)
 {
-    m_stateMovement->update(t_dt);
-    m_position += m_velocity * m_velocityScaler * t_dt.asSeconds();
+    m_stateMovement->update(t_dt); // update velocity
+    updateRotation(); // update rotation
+    m_position += m_velocity; // make movement
+
     wrapCheck();
-    updateRotation();
     m_body.setPosition(m_position);
 }
 
@@ -76,6 +77,8 @@ void Alien::setPosition(sf::Vector2f t_pos)
     m_position = t_pos;
     m_body.setPosition(m_position);
 }
+
+//***************************************
 
 const std::string& Alien::getState()
 {
