@@ -32,6 +32,9 @@ public:
     virtual void setPlayerVelocity(sf::Vector2f* t_playerVelo);
 
     virtual const std::string& getState();
+
+    void draw(sf::RenderTarget& t_target, sf::RenderStates s = sf::RenderStates::Default)const override;
+
     float getHeading(){
         return atan2f(m_velocity.y, m_velocity.x);
     }
@@ -42,6 +45,9 @@ public:
     }
 
 private:
+
+    void updateVisionCone(float t_min, float t_max);
+
     friend class State;
     friend class WanderState;
     friend class SeekState;
@@ -54,6 +60,14 @@ private:
 
     sf::Vector2f* m_target;
     sf::Vector2f* m_playerVelo;
+
+    sf::VertexArray m_visionCone;
+
+    float m_visionArc;
+    float m_visionDistance;
+
+    sf::Color m_baseColor;
+    sf::Color m_endColor;
 
     std::unordered_map<AiStates, std::string> m_mapping;
 };

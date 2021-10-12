@@ -4,7 +4,12 @@ Alien::Alien(std::string const& t_name) :
     Entity("Alien.png", t_name),
     m_currentState(AiStates::NONE),
     m_stateMovement(nullptr),
-    m_target(nullptr)
+    m_target(nullptr),
+    m_visionCone(sf::TriangleFan),
+    m_visionDistance(150.0f),
+    m_visionArc(Deg2Rad(45)),
+    m_baseColor(255,255,255,150),
+    m_endColor(255,255,255,50)
 {
     m_mapping.emplace(AiStates::NONE, "None");
     m_mapping.emplace(AiStates::WANDER, "Wander");
@@ -70,6 +75,11 @@ void Alien::update(sf::Time t_dt)
 
         wrapCheck();
         m_body.setPosition(m_position);
+
+        float heading = getHeading();
+        m_visionCone.clear();
+        m_visionCone.append(sf::Vertex{ m_position, m_baseColor });
+        updateVisionCone(heading - m_visionArc, heading + m_visionArc);
     }
 }
 
@@ -100,4 +110,39 @@ void Alien::setPlayerVelocity(sf::Vector2f* t_playerVelo)
 const std::string& Alien::getState()
 {
     return m_mapping.at(m_currentState);
+}
+
+//***************************************
+
+void Alien::draw(sf::RenderTarget& t_target, sf::RenderStates s) const
+{
+    t_target.draw(m_body);
+    t_target.draw(m_visionCone);
+}
+
+//***************************************
+
+void Alien::updateVisionCone(float t_min, float t_max)
+{
+    for (float a = t_min; a < t_max; a += Deg2Rad(5))
+    {
+        m_visionCone.append(sf::Vertex{ sf::Vector2f(cosf(a) * m_visionDistance, sinf(a) * m_visionDistance) + m_position, m_endColor });
+    }
+
+    float minCross = CrossProduct(sf::Vector2f(cosf(t_min), sinf(t_min)), *m_target - m_position);
+    float maxCross = CrossProduct(sf::Vector2f(cosf(t_max), sinf(t_max)), *m_target - m_position);
+
+    if (minCross > 0 && maxCross < 0)
+    {
+        if (VectorSquaredDistance(*m_target - m_position) < m_visionDistance * m_visionDistance)
+        {
+            m_baseColor = sf::Color(255, 0, 0, 150);
+            m_endColor = sf::Color(255, 0, 0, 50);
+        }
+    }
+    else
+    {
+        m_baseColor = sf::Color(255, 255,255, 150);
+        m_endColor =  sf::Color(255, 255,255, 50);
+    }
 }
