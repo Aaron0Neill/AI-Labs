@@ -15,6 +15,7 @@ public:
 
     virtual void onExit()override;
 private:
-    float m_offset;
+    float m_slowDown;
+    float m_stop;
 };
 #endif

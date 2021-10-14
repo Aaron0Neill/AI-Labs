@@ -5,7 +5,7 @@ Player::Player(std::string const& t_name) :
 	m_playerIncreaseSpeed(10),
 	m_playerRotationSpeed(Deg2Rad(45)),
 	m_heading(0),
-	m_maxSpeed(75),
+	m_maxSpeed(150),
 	m_minSpeed(25)
 {
 }

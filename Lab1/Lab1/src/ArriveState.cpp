@@ -2,7 +2,8 @@
 
 ArriveState::ArriveState(Alien* t_alien) : 
 	State(t_alien),
-    m_offset(200)
+    m_slowDown(200),
+    m_stop(50)
 {
 }
 
@@ -19,7 +20,7 @@ void ArriveState::onEnter()
 	printf("Entering Arrive State\n");
 
     if (m_alien != nullptr)
-        m_alien->m_body.setColor(sf::Color::Magenta);
+        m_alien->m_body.setColor(sf::Color::Green);
 
     if (m_alien->m_target == nullptr)
         printf("Error with seek state! Error: No target found\n");
@@ -30,9 +31,12 @@ void ArriveState::onEnter()
 void ArriveState::update(sf::Time t_dt)
 {
     sf::Vector2f headingVec = *m_alien->m_target - m_alien->m_position;
-    float headingDist = VectorSquaredDistance(headingVec);
-    UnitVec(headingVec);
-    headingVec *= headingDist - (m_offset * m_offset);
+    if (VectorSquaredDistance(headingVec) < m_slowDown * m_slowDown)
+    {
+        m_maxSpeed = VectorSquaredDistance(headingVec) / ((m_slowDown * m_slowDown) / 3);
+        if (VectorSquaredDistance(headingVec) < m_stop * m_stop)
+            m_maxSpeed = 0;
+    }
 
     moveToTarget(getUnitVec(headingVec), t_dt);
 }

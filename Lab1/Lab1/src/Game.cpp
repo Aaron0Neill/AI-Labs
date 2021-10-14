@@ -142,7 +142,7 @@ void Game::render()
 void Game::addAlien()
 {
 	Alien* e = new Alien("Clone");
-	e->setState(AiStates::WANDER);
+	e->setState(AiStates::PURSUE);
 	e->setPosition({ static_cast<float>(rand() % (SCREEN_WIDTH - DEBUG_WIDTH)),
 		static_cast<float>(rand() % SCREEN_HEIGHT) });
 	e->setTarget(&m_player.getPosition());
