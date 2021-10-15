@@ -33,7 +33,7 @@ void Alien::setState(AiStates const& t_state)
     if (m_currentState != t_state)
     {
         m_currentState = t_state;
-        if (m_stateMovement != nullptr)
+        if (m_currentState == AiStates::NONE)
         {
             m_stateMovement->onExit();
             delete m_stateMovement;
@@ -57,8 +57,10 @@ void Alien::setState(AiStates const& t_state)
             m_stateMovement = new PursueState(this);
             break;
         }
+
         if (m_stateMovement != nullptr)
             m_stateMovement->onEnter();
+
     }
 }
 
@@ -107,9 +109,12 @@ void Alien::setPlayerVelocity(sf::Vector2f* t_playerVelo)
 
 //***************************************
 
-const std::string& Alien::getState()
+std::string Alien::getState()
 {
-    return m_mapping.at(m_currentState);
+    if (m_stateMovement != nullptr)
+        return m_stateMovement->getName();
+    std::string r = "Disabled";
+    return r;
 }
 
 //***************************************
@@ -138,6 +143,11 @@ void Alien::updateVisionCone(float t_min, float t_max)
         {
             m_baseColor = sf::Color(255, 0, 0, 150);
             m_endColor = sf::Color(255, 0, 0, 50);
+        }
+        else
+        {
+            m_baseColor = sf::Color(255, 255, 255, 150);
+            m_endColor = sf::Color(255, 255, 255, 50);
         }
     }
     else

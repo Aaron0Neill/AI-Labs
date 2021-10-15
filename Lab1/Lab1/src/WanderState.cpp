@@ -6,6 +6,7 @@ WanderState::WanderState(Alien* t_alien) :
     m_targetRadius(50),
     m_waitTime(4)
 {
+    m_name = "Wander";
 }
 
 //****************************************

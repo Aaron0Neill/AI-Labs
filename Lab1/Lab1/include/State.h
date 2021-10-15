@@ -25,11 +25,15 @@ public:
     
     virtual void onExit()=0;
 
+    virtual std::string getName() { return m_name; };
+
 protected:
 
     virtual void moveToTarget(sf::Vector2f t_target, sf::Time t_dt);
 
     Alien* m_alien;
+
+    std::string m_name;
 
     float m_maxSpeed;
     float m_acceleration;

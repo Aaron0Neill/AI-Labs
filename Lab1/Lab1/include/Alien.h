@@ -31,7 +31,7 @@ public:
 
     virtual void setPlayerVelocity(sf::Vector2f* t_playerVelo);
 
-    virtual const std::string& getState();
+    virtual std::string getState();
 
     void draw(sf::RenderTarget& t_target, sf::RenderStates s = sf::RenderStates::Default)const override;
 

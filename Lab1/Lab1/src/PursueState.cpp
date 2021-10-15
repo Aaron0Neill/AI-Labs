@@ -3,6 +3,7 @@
 PursueState::PursueState(Alien* t_alien) : 
 	State(t_alien)
 {
+    m_name = "Pursue";
 }
 
 //****************************************
